@@ -13,20 +13,12 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/auth")
-@PreAuthorize("permitAll()")
 public class AthenticationController {
 
     private final AuthenticationService authenticationService;
 
     public AthenticationController(AuthenticationService authenticationService) {
         this.authenticationService = authenticationService;
-    }
-
-    @GetMapping("/v1/getUsers2")
-    public ResponseEntity<List<UserEntity>> getAllUsers2(){
-
-        List<UserEntity> response = authenticationService.getAllUsers();
-        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/v1/getUsers")
