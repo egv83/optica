@@ -1,8 +1,10 @@
 package com.ochobits.optica.historiaClinica.controller;
 
+import com.ochobits.optica.athentication.security.config.OpticaUserDetails;
 import com.ochobits.optica.historiaClinica.dto.HistoriaClinicaRequest;
 import com.ochobits.optica.historiaClinica.services.HistoriaClinicaService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,8 +21,11 @@ public class HistoriaClinicaController {
     public ResponseEntity<Object> getAllHistoriasClinicas(
             @RequestParam String fullname,
             @RequestParam(defaultValue= "0") int page,
-            @RequestParam(defaultValue= "10") int size
+            @RequestParam(defaultValue= "10") int size,
+            Authentication authentication
     ){
+        OpticaUserDetails userDetails = (OpticaUserDetails) authentication.getPrincipal();
+
         HistoriaClinicaRequest request = new HistoriaClinicaRequest(
                 fullname
         );
@@ -32,8 +37,11 @@ public class HistoriaClinicaController {
     public ResponseEntity<Object> getAllHistoriasClinicasPaged(
             @RequestParam String fullname,
             @RequestParam(defaultValue= "0") int page,
-            @RequestParam(defaultValue= "10") int size
+            @RequestParam(defaultValue= "10") int size,
+            Authentication authentication
     ){
+        OpticaUserDetails userDetails = (OpticaUserDetails) authentication.getPrincipal();
+
         HistoriaClinicaRequest request = new HistoriaClinicaRequest(
                 fullname
         );

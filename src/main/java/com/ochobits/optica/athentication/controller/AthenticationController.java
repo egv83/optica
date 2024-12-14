@@ -1,11 +1,8 @@
 package com.ochobits.optica.athentication.controller;
 
 import com.ochobits.optica.athentication.dto.*;
-import com.ochobits.optica.athentication.entities.UserEntity;
 import com.ochobits.optica.athentication.services.AuthenticationService;
-import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,20 +33,21 @@ public class AthenticationController {
     }
 
     @PostMapping("/v1/login")
-    public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request){
-        LoginResponse response = null;
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request){
+//        LoginResponse response = null;
         LoginRequest loginRequest = new LoginRequest(
                 request.userName(),
                 request.password()
         );
 
-        LoginResponse result = authenticationService.login(loginRequest);
-        response = new LoginResponse(result.userName(),result.token(),result.message());
+        var result = authenticationService.login(loginRequest);
+//        response = new LoginResponse(result.userName(),result.token(),result.message());
+        var response = new LoginResponse(result.userName(),result.token(),result.message());
         return ResponseEntity.ok(response);
     }
 
     @PostMapping("/v1/register")
-    public ResponseEntity<SignUpResponse> signUp(@Valid @RequestBody SignUpRequest request){
+    public ResponseEntity<SignUpResponse> signUp(@RequestBody SignUpRequest request){
         SignUpResponse response = null;
         SignUpRequest signUp = new SignUpRequest(
                 request.userName(),

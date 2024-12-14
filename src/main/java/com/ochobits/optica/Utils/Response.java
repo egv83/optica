@@ -74,7 +74,8 @@ public record Response<T>(
      */
     public Map<String, Object> toDynamicMap(Class<T> fieldName) {
         Map<String, Object> responseMap = new HashMap<>();
-        responseMap.put(fieldName.getSimpleName(), this.data);
+        String fieldKey = fieldName.getSimpleName();
+        responseMap.put(fieldKey.substring(0, 1).toLowerCase() + fieldKey.substring(1), this.data);
         page.ifPresent(p -> responseMap.put("page", p));
         if (message != null) {
             responseMap.put("message", message);

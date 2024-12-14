@@ -10,9 +10,11 @@ import com.ochobits.optica.historiaClinica.repository.JpaHistoriaclinicaReposito
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -107,7 +109,14 @@ public class HistoriaClinicaService {
                             entity.getInversa()
                     )).toList();
 
+//           Response<HistoriaClinica> response = Response.withData(historiaClinica,pageDetails);
+//           Map<String,Object> customeResponse = response.toDynamicMap(HistoriaClinica.class);
+//           return ResponseEntity.ok(customeResponse);
+
             return Response.withData(historiaClinica,pageDetails).toDynamicMap(HistoriaClinica.class);
+
+
+
 //            return HistoriaClinicaResponse.withData(historiaClinica,pageDetails).toMap();
 
 //            return GlobalUtils.toMap(HistoriaClinicaResponse.withData(historiaClinica,pageDetails));
