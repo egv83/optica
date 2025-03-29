@@ -68,7 +68,7 @@ public class AuthenticationService {
             }
 
             var user = UserEntity.builder()
-                    .id(GenericIdGenerator.getNewId(jpaUserRepository))
+                    .id(jpaUserRepository.findMaxId())
                     .userName(signUpRequest.userName())
                     .password(passwordEncoder.encode(signUpRequest.password()))
                     .build();

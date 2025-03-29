@@ -15,17 +15,12 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import org.w3c.dom.stylesheets.LinkStyle;
 
 import javax.crypto.SecretKey;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.List;
 import java.util.Objects;
 
 @Component

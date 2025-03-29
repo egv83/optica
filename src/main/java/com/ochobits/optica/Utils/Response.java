@@ -1,9 +1,5 @@
 package com.ochobits.optica.Utils;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.ochobits.optica.historiaClinica.dto.HistoriaClinica;
-import com.ochobits.optica.historiaClinica.dto.HistoriaClinicaResponse;
-
 import java.util.*;
 
 //@JsonSerialize(using = ResponseSerializer.class)
@@ -73,9 +69,9 @@ public record Response<T>(
      * Genera un mapa con el nombre dinámico del campo.
      */
     public Map<String, Object> toDynamicMap(Class<T> fieldName) {
-        Map<String, Object> responseMap = new HashMap<>();
+        Map<String, Object> responseMap = new LinkedHashMap<>();
         String fieldKey = fieldName.getSimpleName();
-        responseMap.put(fieldKey.substring(0, 1).toLowerCase() + fieldKey.substring(1), this.data);
+        responseMap.put(fieldKey.substring(0, 1) + fieldKey.substring(1), this.data);
         page.ifPresent(p -> responseMap.put("page", p));
         if (message != null) {
             responseMap.put("message", message);
