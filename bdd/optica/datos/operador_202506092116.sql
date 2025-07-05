@@ -1,0 +1,12 @@
+INSERT INTO optica.operador
+(operador, clave, id_operador)
+VALUES('MEDICO', '©°§©¶¶³', 1);
+INSERT INTO optica.operador
+(operador, clave, id_operador)
+VALUES('SECRETARIA', '·©§¶©', 2);
+INSERT INTO optica.operador
+(operador, clave, id_operador)
+VALUES('medico1', '$2a$10$H3w.tlG0fQYg/hdws8t09OBpCPLp1FsJFpnmEIXbvKAPBh.8ICSSu', 3);
+INSERT INTO optica.operador
+(operador, clave, id_operador)
+VALUES('medico2', '$2a$10$yUpSRkqAN2tiFZ7uUYKVtuVSicYla1vl9fXkfhH5Xxhcx1b0curMW', 4);
